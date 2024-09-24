@@ -95,6 +95,8 @@ class FeedManager:
         grt_El.text = "Most Recent Uploads"
 
         for video in videos:
+            if video.metadata.get("feedTags") is None:
+                continue
             item = ET.SubElement(channel_Element, "item")
 
             for key in video.metadata["feedTags"].keys():
