@@ -71,14 +71,10 @@ class FeedManager:
     
     def video_RetrieveMostRecent(self, querySize: int):
         queryData = self.db__RetrieveMostRecent(querySize = querySize)
-        bunny_fileList = self.internal__GetStoredFileListFromBunny("videos/")
-
+        
         videos = []
         for object in queryData:
             video = self.video_CreateFromQueryData(object)
-            if video.video_id not in [x.rsplit(".", 1)[0] for x in bunny_fileList]:
-                continue
-
             videos.append(video)
         return videos
     
