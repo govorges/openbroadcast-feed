@@ -100,7 +100,7 @@ class FeedManager:
             item = ET.SubElement(channel_Element, "item")
 
             for key in video.metadata["feedTags"].keys():
-                subElement = ET.SubElement(item, key)
+                subElement = ET.SubElement(item, f"irc:{key}")
                 subElement.text = str(video.metadata["feedTags"][key])
 
         output_xml = ET.tostring(rss_root)
