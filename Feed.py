@@ -97,9 +97,9 @@ class FeedManager:
         for video in videos:
             item = ET.SubElement(channel_Element, "item")
 
-            for key in video.metadata.keys():
+            for key in video.metadata["feedTags"].keys():
                 subElement = ET.SubElement(item, key)
-                subElement.text = str(video.metadata.get(key))
+                subElement.text = str(video.metadata["feedTags"][key])
 
         output_xml = ET.tostring(rss_root)
         with open(path.join(HOME_DIR, "uploads", "MostRecent.xml"), "wb") as fileW:
