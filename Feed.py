@@ -3,15 +3,21 @@ from Bunny import BunnyAPI
 from os import path, environ
 
 import psycopg2
+import time
 
-postgres_connection = psycopg2.connect(
-    database=environ["POSTGRESDB_DATABASE"],
-    host=environ["POSTGRESDB_HOST"],
-    user=environ["POSTGRESDB_USER"],
-    password=environ["POSTGRES_PASSWORD"],
-    port=environ["POSTGRESDB_DOCKER_PORT"]
+postgres_connection = None
+while postgres_connection is None:
+    try:
+        postgres_connection = psycopg2.connect(
+            database=environ["POSTGRESDB_DATABASE"],
+            host=environ["POSTGRESDB_HOST"],
+            user=environ["POSTGRESDB_USER"],
+            password=environ["POSTGRES_PASSWORD"],
+            port=environ["POSTGRESDB_DOCKER_PORT"]
+        )
+    except:
+        time.sleep(10)
 
-)
 postgres_cursor = postgres_connection.cursor()
 
 HOME_DIR = path.dirname(path.realpath(__file__))
