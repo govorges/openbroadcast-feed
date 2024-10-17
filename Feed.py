@@ -88,7 +88,7 @@ class FeedManager:
         videos = self.video_RetrieveMostRecent(querySize=50)
 
         rss_root = ET.Element("rss")
-        rss_root.set("xmlns:irc", "http://gov.org.es/")
+        rss_root.set("xmlns:irc", "http://openbroadcast.cz/")
         rss_root.set("version", "2.0")
 
         channel_Element = ET.SubElement(rss_root, "channel")
@@ -120,4 +120,6 @@ class FeedManager:
 
 if __name__ == "__main__":
     fm = FeedManager()
-    fm.CreateFeed_MostRecentVideos()
+    while True:
+        time.sleep(30)
+        fm.CreateFeed_MostRecentVideos()
