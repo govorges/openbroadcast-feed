@@ -4,10 +4,11 @@ from os import environ
 class BunnyAPI:
     def __init__(self):
         self.API_Endpoint_URL = environ["BUNNY_API_ENDPOINT_ADDRESS"]
-    def file_QueueUpload(self, local_file_path: str, target_file_path: str):
+    def file_QueueUpload(self, local_file_path: str, target_file_path: str, deleteLocal = False):
         headers = {
             "local-file-path": local_file_path,
-            "target-file-path": target_file_path
+            "target-file-path": target_file_path,
+            "deleteLocal": deleteLocal
         }
         request = requests.post(f"http://{self.API_Endpoint_URL}/files/upload", headers=headers)
 

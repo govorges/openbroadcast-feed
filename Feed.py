@@ -113,7 +113,8 @@ class FeedManager:
         self.bunny.file_Delete("/feeds/MostRecent.xml")
         self.bunny.file_QueueUpload(
             local_file_path = path.join(HOME_DIR, "uploads", "MostRecent.xml"),
-            target_file_path = "/feeds/MostRecent.xml"
+            target_file_path = "/feeds/MostRecent.xml",
+            deleteLocal = False
         )
         
 
