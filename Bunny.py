@@ -8,7 +8,7 @@ class BunnyAPI:
         headers = {
             "local-file-path": local_file_path,
             "target-file-path": target_file_path,
-            "deleteLocal": deleteLocal
+            "deleteLocal": str(deleteLocal)
         }
         request = requests.post(f"http://{self.API_Endpoint_URL}/files/upload", headers=headers)
 
